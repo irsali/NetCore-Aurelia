@@ -1,0 +1,47 @@
+﻿<template>
+  <div><button class="btn btn-primary"
+               click.trigger="updateChart()"
+               >Update Chart</button></div>
+
+  <div>
+    <ej-chart id="container"
+              e-on-load.trigger="onchartload($event)"
+              e-legend.bind="legend"
+              e-size.bind="size"
+              e-title.bind="title"
+              e-common-series-options.bind="commonSeriesOptions">
+      <ej-series 
+                 e-data-source.bind="ExpendituresList"
+                 e-x-name="xName"
+                 e-y-name="yName">
+      </ej-series>
+    </ej-chart>
+  </div>
+    <!--<aside class="col-md-4">
+
+      <div class="form-group row">
+        <label class="col-2 col-form-label">Title</label>
+        <div class="col-10">
+          <input type="text" class="form-control"
+                 ej-mask-edit="e-value.bind:titleText;" />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-2 col-form-label">Chart width in pixel</label>
+        <div class="col-10">
+          <input type="text" class="form-control"
+                 ej-mask-edit="e-value.bind:width;" />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-2 col-form-label">Chart height in pixel</label>
+        <div class="col-10">
+          <input type="text" class="form-control"
+                 ej-mask-edit="e-value.bind:height;" />
+        </div>
+      </div>
+
+
+    </aside>-->
+
+</template>

@@ -1,0 +1,49 @@
+﻿<template>
+
+  <div class="float-right" click.delegate="callDebugger()">
+    Debugger
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 offset-3">
+      <h1> Dynamically Generated controls</h1>
+
+      <!--Repeat for all controls-->
+      <div repeat.for="fieldValues of fieldValuesArr" class="form-group row">
+        <label for="example-text-input" class="col-4 col-form-label">${fieldValues[posFieldName]}</label>
+        <div class="col-8">
+          <!--Conditionally render a control-->
+          <!--Simple field-->
+          <input if.bind="fieldValues[posFieldElementId]==ElementEnum.InputBox" id="dynCtrl${fieldValues[posFieldId]}" type="text" class="form-control" ej-mask-edit="e-value.bind:firstName;e-width.bind:cwidth;" />
+          <!--Text Area-->
+          <textarea if.bind="fieldValues[posFieldElementId]==ElementEnum.TextArea" class="form-control" id="dynCtrl${fieldValues[posFieldId]}" rows="3"></textarea>
+          <!--Numeric field-->
+          <input if.bind="fieldValues[posFieldElementId]==ElementEnum.NumberInputBox" id="dynCtrl${fieldValues[posFieldId]}" type="text" ej-numeric-textbox="e-value.bind:numericValue;e-width.bind:cwidth;" />
+          <!--Percentage field-->
+          <input if.bind="fieldValues[posFieldElementId]==ElementEnum.PercentageInputBox" id="dynCtrl${fieldValues[posFieldId]}" type="text" ej-percentage-textbox="e-value.bind:percentValue;e-width.bind:cwidth;" />
+          <!--Currency field-->
+          <input if.bind="fieldValues[posFieldElementId]==ElementEnum.CurrencyInputBox" id="dynCtrl${fieldValues[posFieldId]}" type="text" ej-currency-textbox="e-value.bind:currencyValue;e-width.bind:cwidth;" />
+          <!--Date field-->
+          <input if.bind="fieldValues[posFieldElementId]==ElementEnum.DateInputBox" ej-date-picker="e-value.bind:dateValue;e-width.bind:cwidth;" />
+          <!--Time field-->
+          <input if.bind="fieldValues[posFieldElementId]==ElementEnum.TimeInputBox" ej-time-picker="e-value.two-way:timeValue;e-width.bind:cwidth;" />
+          <!--DateTime field-->
+          <input if.bind="fieldValues[posFieldElementId]==ElementEnum.DateTimeInputBox" ej-date-time-picker="e-value.bind:datetimeValue;e-width.bind:cwidth;" />
+          <!--Autocomplete field-->
+          <input if.bind="fieldValues[posFieldElementId]==ElementEnum.AutoCompleteInputBox" type="text" ej-autocomplete="e-watermark-text:Select a car; e-data-source.bind: carList;e-width.bind:cwidth;" />
+          <!--File Uploader field-->
+          <ej-uploadbox if.bind="fieldValues[posFieldElementId]==ElementEnum.FileUpload" e-save-url.bind="uploadFileUrl" e-remove-url.bind="removeUploadedFileUrl"></ej-uploadbox>
+          <!--Dropdown field-->
+          <input if.bind="fieldValues[posFieldElementId]==ElementEnum.DropDown" id="dynCtrl${fieldValues[posFieldId]}" ej-drop-down-list="e-data-source.bind:filterDataForDropdown(fieldValues[posFieldListId]);e-fields.bind:fields;e-watermark-text.bind:watermarkText;e-width.bind:cwidth;" type="text" />
+          <!--MultiSelect DropDown field-->
+          <input if.bind="fieldValues[posFieldElementId]==ElementEnum.MultiSelectDropDown" id="dynCtrl${fieldValues[posFieldId]}" ej-drop-down-list="e-data-source.bind:filterDataForDropdown(fieldValues[posFieldListId]);e-fields.bind:fields;e-show-checkbox.bind:multiSelectShowCheckbox;e-multiSelectMode.bind:true;e-watermark-text.bind:watermarkText;e-width.bind:cwidth;" type="text"  />
+
+          ${ElementEnum[fieldValues[posFieldElementId]]}
+          <!--[fieldValues[posFieldListId]]-->
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</template>

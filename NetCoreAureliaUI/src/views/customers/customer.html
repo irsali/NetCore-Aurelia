@@ -1,0 +1,54 @@
+<template>
+  <div class="container">
+    <form submit.delegate="save()" novalidate>
+      <!-- header -->
+      <compose view="../entity-header.html"></compose>
+
+      <!-- customer fields -->
+      <div class="row">
+        <div class="input-field col-md-6">
+          <input id="CompanyName" type="text" value.bind="entity.CompanyName" class="form-control">
+          <label for="CompanyName" materialize>Company Name</label>
+        </div>
+        <div class="input-field col-md-6">
+          <input id="ContactName" type="text" value.bind="entity.ContactName" class="form-control">
+          <label for="ContactName" materialize>Contact Name</label>
+        </div>
+        <div class="input-field col-md-6">
+          <input id="ContactTitle" type="text" value.bind="entity.ContactTitle" class="form-control">
+          <label for="ContactTitle" materialize>Contact Title</label>
+        </div>
+
+        <div class="input-field col-md-6">
+          <input id="Phone" type="text" value.bind="entity.Phone" class="form-control">
+          <label for="Phone" materialize>Phone</label>
+        </div>
+        <div class="input-field col-md-6">
+          <input id="Fax" type="text" value.bind="entity.Fax" class="form-control">
+          <label for="Fax" materialize>Fax</label>
+        </div>
+      </div>
+
+      <h4>Address</h4>
+
+      <div class="row">
+        <div class="input-field col-md-6">
+          <input id="Address" type="text" value.bind="entity.Address" class="form-control">
+          <label for="Address" materialize>Address</label>
+        </div>
+        <div class="input-field col-md-6">
+          <input id="City" type="text" value.bind="entity.City" class="form-control">
+          <label for="City" materialize>City</label>
+        </div>
+        <div class="input-field col-md-6">
+          <input id="Region" type="text" value.bind="entity.Region" class="form-control">
+          <label for="Region" materialize>Region</label>
+        </div>
+        <div class="input-field col-md-6">
+          <input id="PostalCode" type="tel" value.bind="entity.PostalCode" class="form-control">
+          <label for="PostalCode" materialize>Postal Code</label>
+        </div>
+      </div>
+    </form>
+  </div>
+</template>

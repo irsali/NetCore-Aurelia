@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <TypeScriptToolsVersion>2.3</TypeScriptToolsVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="aurelia_project\tasks\e2e.ts" />
+    <Content Include="src\views\generatedControls\refData.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="src\resources\binding-behaviors\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\images\person.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="src\views\charts\charts-bar.js">
+      <DependentUpon>charts-bar.ts</DependentUpon>
+    </None>
+    <None Update="src\views\charts\charts-bar.js.map">
+      <DependentUpon>charts-bar.js</DependentUpon>
+    </None>
+    <None Update="src\views\charts\charts-column.js">
+      <DependentUpon>charts-column.ts</DependentUpon>
+    </None>
+    <None Update="src\views\iq-portal.ts">
+      <DependentUpon>iq-portal.html</DependentUpon>
+    </None>
+    <None Update="src\views\not-found.ts">
+      <DependentUpon>not-found.html</DependentUpon>
+    </None>
+  </ItemGroup>
+
+</Project>

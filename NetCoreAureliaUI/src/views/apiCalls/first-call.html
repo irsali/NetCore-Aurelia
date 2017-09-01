@@ -1,0 +1,34 @@
+<template>
+  <div class="container">
+    <h3>Click on 'Call Api' button</h3>
+    <button class="btn btn-outline-primary" click.delegate="metaData()">Breeze MetaData</button>
+    <button class="btn btn-outline-primary" click.delegate="deleteString('responseText')">Delete</button>
+    <div class="card">
+      <div class="card-text">
+        ${responseText}
+      </div>
+    </div>
+    <br />
+    <button class="btn btn-outline-primary" click.delegate="getTodoes()">Api Get Todoes</button>
+    <button class="btn btn-outline-primary" click.delegate="deleteString('gtodoes')">Delete</button>
+    <div class="card">
+      <div class="card-text">
+        ${gtodoes}
+      </div>
+    </div>
+
+    <br />
+    <div>
+      <hr />
+      Title <input class="form-control" type="text" value.bind="Title" />
+      Description <input class="form-control" type="text" value.bind="Description" />
+      <button class="btn btn-outline-primary" click.delegate="apiTodoes()">Api Save</button>
+      <button class="btn btn-outline-primary" click.delegate="deleteString('todoes')">Delete</button>
+      <div class="card">
+        <div class="card-text">
+          ${todoes}
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

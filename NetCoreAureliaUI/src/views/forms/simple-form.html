@@ -1,0 +1,159 @@
+﻿<template>
+
+  <br />
+  <br />
+
+  <div>Hello!</div>
+
+  <div class="row">
+    <div class="col-md-6 offset-3">
+
+      <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">Name</label>
+        <div class="col-10">
+          <input id="firstName" type="text" class="form-control" ej-mask-edit="e-value.bind:firstName;e-width.bind:cwidth;" />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">Pattern</label>
+        <div class="col-10">
+          <input id="maskedit" type="text" ej-mask-edit="e-value.bind:mvalue;e-mask-format.bind:maskFormat;e-width.bind:cwidth;" />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">Textarea</label>
+        <div class="col-10">
+          <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">Number</label>
+        <div class="col-10">
+          <input id="numeric" type="text" ej-numeric-textbox="e-value.bind:numericValue;e-width.bind:cwidth;" />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">Percentage</label>
+        <div class="col-10">
+          <input id="percent" type="text" ej-percentage-textbox="e-value.bind:percentValue;e-width.bind:cwidth;" />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">Currency</label>
+        <div class="col-10">
+          <input id="currency" type="text" ej-currency-textbox="e-value.bind:currencyValue;e-width.bind:cwidth;" />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">Date</label>
+        <div class="col-10">
+          <input ej-date-picker="e-value.bind:dateValue;e-width.bind:cwidth;" />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">Time</label>
+        <div class="col-10">
+          <input ej-time-picker="e-value.two-way:timeValue;e-width.bind:cwidth;" />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">Date Time</label>
+        <div class="col-10">
+          <input ej-date-time-picker="e-value.bind:datetimeValue;e-width.bind:cwidth;" />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">Car list</label>
+        <div class="col-10">
+          <input type="text" ej-autocomplete="e-watermark-text:Select a car; e-data-source.bind: carList;e-width.bind:cwidth;" />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">Select a file to upload</label>
+        <div class="col-10">
+          <!--<div class="uploadbox-default-control">-->
+          <ej-uploadbox e-save-url.bind="uploadFileUrl" e-remove-url.bind="removeUploadedFileUrl"></ej-uploadbox>
+        </div>
+      </div>
+
+      <style>
+        .uploadbox-default-control {
+          width: 100%;
+          height: 35px;
+        }
+
+        .uploadbox-drag-and-drop-control {
+          width: 100%;
+          height: 100%;
+        }
+
+        #UploadDragAndDrop .e-selectpart {
+          height: 35px;
+        }
+      </style>
+
+      <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">Drag drop file to upload</label>
+        <div class="col-10">
+          <ej-uploadbox id="UploadDragAndDrop" e-save-url.bind="uploadFileUrl" e-remove-url.bind="removeUploadedFileUrl" e-allow-drag-and-drop.bind="dragAndDrop"
+                        e-multiple-files-selection.bind="multipleFiles"></ej-uploadbox>
+        </div>
+      </div>
+
+      <button class="e-btn" ej-button="e-width.bind:cwidth;"> Save </button>
+
+      <br />
+      <br />
+      <!--Dropdown-->
+      <h2>Play with Dropdown</h2>
+
+      <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">Simple</label>
+        <div class="col-10">
+          <input id="skillsets" type="text" ej-drop-down-list="e-data-source.bind:skillSets;e-fields.bind:fields;e-watermark-text.bind:watermarkText;e-width.bind:cwidth;" e-on-create.trigger="populateDropdown()" />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">Add this text</label>
+        <div class="col-10">
+          <input id="skillName" type="text" ej-mask-edit="e-value.two-way:skillName;e-width.bind:cwidth;" />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-12">
+          <button class="e-btn" ej-button="e-text.bind:'Add Skill';e-width.bind:cwidth;" e-on-click.trigger="addSkill($event)" />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">Toggle Checkbox</label>
+        <div class="col-10">
+          <input type="checkbox" class="e-togglebtn" ej-toggle-button="e-default-text:Disable;e-active-text:Enable;e-size.bind:cwidth;" e-on-change.trigger="onEnableDisable($event)" />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">Add Search Filter</label>
+        <div class="col-10">
+          <button class="e-btn" ej-button="e-text.bind:'Add Search filter';e-width.bind:cwidth;" e-on-click.trigger="addFilter()" />
+        </div>
+      </div>
+
+      <!-- End Dropdown-->
+
+    </div>
+
+  </div>
+
+</template>
