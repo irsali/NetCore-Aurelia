@@ -13,111 +13,116 @@
       width: 40%;
       height: 100%;
     }
+
     .UploadDragAndDrop .e-selectpart {
       height: 35px;
     }
-
-
   </style>
 
-
-  <div class="float-right" click.delegate="callDebugger()">
-    Debugger
+  <div class="container">
+    <nav class="navbar navbar-toggleable-md fixed-top navbar-light bg-faded">
+      <div class="navbar-nav mr-auto">
+        <a class="navbar-brand" href="#">Dynamically Generated controls</a>
+      </div>
+      <span click.trigger="callDebugger()" class="navbar-brand my-2 my-lg-0">Debugger</span>
+    </nav>
   </div>
+
+  <br />
+  <br />
+  <br/>
 
   <div class="row">
     <div class="col-md-6 offset-3">
-      <h1> Dynamically Generated controls</h1>
-
       <!--validation messages-->
       <!--<ul if.bind="controller.errors">
         <li repeat.for="error of controller.errors">
           ${error.message}
         </li>
       </ul>-->
-        <!--Repeat for all controls-->
-        <div class="form-group row"
-             repeat.for="formField of formFields">
-          <label for="example-text-input" class="col-4 col-form-label">${formField.text}</label>
-          <div class="col-8">
-            <!--Conditionally render a control-->
-            <!--Simple field-->
-            <input id="dynCtrl${formField.fieldId}" type="text" class="form-control"
-                   if.bind="formField.elementId==ElementEnum.InputBox"
-                   ej-mask-edit="e-value.two-way:formField.value & validate;e-width.bind:cwidth;"
-                   disabled.bind="formField.disabled" />
-            <!--Text Area-->
-            <textarea class="form-control" id="dynCtrl${formField.fieldId}" rows="3"
-                      if.bind="formField.elementId==ElementEnum.TextArea"
-                      value.bind="formField.value & validate"
-                      disabled.bind="formField.disabled"></textarea>
-            <!--Numeric field-->
-            <input id="dynCtrl${formField.fieldId}" type="text"
-                   if.bind="formField.elementId==ElementEnum.NumberInputBox"
-                   ej-numeric-textbox="e-enabled.bind:!formField.disabled;e-value.two-way:formField.value & validate;e-width.bind:cwidth;"
-                   disabled.bind="formField.disabled" />
-            <!--Percentage field-->
-            <input id="dynCtrl${formField.fieldId}" type="text"
-                   if.bind="formField.elementId==ElementEnum.PercentageInputBox"
-                   ej-percentage-textbox="e-enabled.bind:!formField.disabled;e-value.two-way:formField.value & validate;e-width.bind:cwidth;"
-                   disabled.bind="formField.disabled" />
-            <!--Currency field-->
-            <input id="dynCtrl${formField.fieldId}" type="text"
-                   if.bind="formField.elementId==ElementEnum.CurrencyInputBox"
-                   ej-currency-textbox="e-enabled.bind:!formField.disabled;e-value.two-way:formField.value & validate;e-width.bind:cwidth;"
-                   disabled.bind="formField.disabled" />
-            <!--Date field-->
-            <input if.bind="formField.elementId==ElementEnum.DateInputBox"
-                   ej-date-picker="e-enabled.bind:!formField.disabled;e-value.two-way:formField.value & validate;e-width.bind:cwidth;"
-                   disabled.bind="formField.disabled" />
-            <!--Time field-->
-            <input if.bind="formField.elementId==ElementEnum.TimeInputBox"
-                   ej-time-picker="e-enabled.bind:!formField.disabled;e-value.two-way:formField.value & validate;e-width.bind:cwidth;"
-                   disabled.bind="formField.disabled" />
-            <!--DateTime field-->
-            <input if.bind="formField.elementId==ElementEnum.DateTimeInputBox"
-                   ej-date-time-picker="e-enabled.bind:!formField.disabled;e-value.two-way:formField.value & validate;e-width.bind:cwidth;"
-                   disabled.bind="formField.disabled" />
-            <!--Autocomplete field-->
-            <input if.bind="formField.elementId==ElementEnum.AutoCompleteInputBox"
-                   type="text"
-                   ej-autocomplete="e-enabled.bind:!formField.disabled;e-value.two-way:formField.value & validate;e-watermark-text:Select a car; e-data-source.bind: carList;e-width.bind:cwidth;"
-                   disabled.bind="formField.disabled" />
-            <!--File Uploader field-->
-            <div class="uploadbox-default-control"
-                 if.bind="formField.elementId==ElementEnum.FileUpload">
-              <ej-uploadbox e-save-url.bind="uploadFileUrl"
-                            e-remove-url.bind="removeUploadedFileUrl"
-                            e-enabled.bind="!formField.disabled"
-                            disabled.bind="formField.disabled"
-                            value.bind="formField.value & validate"></ej-uploadbox>
-            </div>
-            <!--Drag and Drop file upload-->
-            <div class="uploadbox-drag-and-drop-control" style="width:100%;height:100%"
-                 if.bind="formField.elementId==ElementEnum.DragAndDropUploadbox">
-              <ej-uploadbox class="UploadDragAndDrop"
-                            e-save-url.bind="fileSaveUrl"
-                            e-remove-url.bind="fileRemoveUrl"
-                            e-enabled.bind="!formField.disabled"
-                            e-multiple-files-selection.bind="multipleFiles"
-                            e-allow-drag-and-drop.bind="true"
-                            disabled.bind="formField.disabled"
-                            value.bind="formField.value & validate"></ej-uploadbox>
-            </div>
-            <!--Dropdown field-->
-            <input id="dynCtrl${formField.fieldId}" type="text"
-                   if.bind="formField.elementId==ElementEnum.DropDown"
-                   ej-drop-down-list="e-enabled.bind:!formField.disabled;e-value.two-way:formField.value & validate;e-data-source.bind:filterDataForDropdown(formField.listId);e-fields.bind:fields;e-watermark-text.bind:watermarkText;e-width.bind:cwidth;" />
-            <!--MultiSelect DropDown field-->
-            <input id="dynCtrl${formField.fieldId}" type="text"
-                   if.bind="formField.elementId==ElementEnum.MultiSelectDropDown"
-                   ej-drop-down-list="e-enabled.bind:!formField.disabled;e-value.two-way:formField.value & validate;e-data-source.bind:filterDataForDropdown(formField.listId);e-fields.bind:fields;e-show-checkbox.bind:multiSelectShowCheckbox;e-multiSelectMode.bind:true;e-watermark-text.bind:watermarkText;e-width.bind:cwidth;" />
-            <div>${ElementEnum[formField.elementId]}, Required: ${formField.validation.required}, email: ${formField.validation.email}, MaxLength: ${formField.validation.maxLength}, MinLength: ${formField.validation.minLength}</div>
-            <!--[formField[posFieldListId]]-->
+      <!--Repeat for all controls-->
+      <div class="form-group row"
+           repeat.for="formField of formFields">
+        <label for="example-text-input" class="col-4 col-form-label">${formField.text}</label>
+        <div class="col-8">
+          <!--Conditionally render a control-->
+          <!--Simple field-->
+          <input id="dynCtrl${formField.fieldId}" type="text" class="form-control"
+                 if.bind="formField.elementId==ElementEnum.InputBox"
+                 ej-mask-edit="e-value.two-way:formField.value & validate;e-width.bind:cwidth;"
+                 disabled.bind="formField.disabled" />
+          <!--Text Area-->
+          <textarea class="form-control" id="dynCtrl${formField.fieldId}" rows="3"
+                    if.bind="formField.elementId==ElementEnum.TextArea"
+                    value.bind="formField.value & validate"
+                    disabled.bind="formField.disabled"></textarea>
+          <!--Numeric field-->
+          <input id="dynCtrl${formField.fieldId}" type="text"
+                 if.bind="formField.elementId==ElementEnum.NumberInputBox"
+                 ej-numeric-textbox="e-enabled.bind:!formField.disabled;e-value.two-way:formField.value & validate;e-width.bind:cwidth;"
+                 disabled.bind="formField.disabled" />
+          <!--Percentage field-->
+          <input id="dynCtrl${formField.fieldId}" type="text"
+                 if.bind="formField.elementId==ElementEnum.PercentageInputBox"
+                 ej-percentage-textbox="e-enabled.bind:!formField.disabled;e-value.two-way:formField.value & validate;e-width.bind:cwidth;"
+                 disabled.bind="formField.disabled" />
+          <!--Currency field-->
+          <input id="dynCtrl${formField.fieldId}" type="text"
+                 if.bind="formField.elementId==ElementEnum.CurrencyInputBox"
+                 ej-currency-textbox="e-enabled.bind:!formField.disabled;e-value.two-way:formField.value & validate;e-width.bind:cwidth;"
+                 disabled.bind="formField.disabled" />
+          <!--Date field-->
+          <input if.bind="formField.elementId==ElementEnum.DateInputBox"
+                 ej-date-picker="e-enabled.bind:!formField.disabled;e-value.two-way:formField.value & validate;e-width.bind:cwidth;"
+                 disabled.bind="formField.disabled" />
+          <!--Time field-->
+          <input if.bind="formField.elementId==ElementEnum.TimeInputBox"
+                 ej-time-picker="e-enabled.bind:!formField.disabled;e-value.two-way:formField.value & validate;e-width.bind:cwidth;"
+                 disabled.bind="formField.disabled" />
+          <!--DateTime field-->
+          <input if.bind="formField.elementId==ElementEnum.DateTimeInputBox"
+                 ej-date-time-picker="e-enabled.bind:!formField.disabled;e-value.two-way:formField.value & validate;e-width.bind:cwidth;"
+                 disabled.bind="formField.disabled" />
+          <!--Autocomplete field-->
+          <input if.bind="formField.elementId==ElementEnum.AutoCompleteInputBox"
+                 type="text"
+                 ej-autocomplete="e-enabled.bind:!formField.disabled;e-value.two-way:formField.value & validate;e-watermark-text:Select a car; e-data-source.bind: carList;e-width.bind:cwidth;"
+                 disabled.bind="formField.disabled" />
+          <!--File Uploader field-->
+          <div class="uploadbox-default-control"
+               if.bind="formField.elementId==ElementEnum.FileUpload">
+            <ej-uploadbox e-save-url.bind="uploadFileUrl"
+                          e-remove-url.bind="removeUploadedFileUrl"
+                          e-enabled.bind="!formField.disabled"
+                          disabled.bind="formField.disabled"
+                          value.bind="formField.value & validate"></ej-uploadbox>
           </div>
+          <!--Drag and Drop file upload-->
+          <div class="uploadbox-drag-and-drop-control" style="width:100%;height:100%"
+               if.bind="formField.elementId==ElementEnum.DragAndDropUploadbox">
+            <ej-uploadbox class="UploadDragAndDrop"
+                          e-save-url.bind="fileSaveUrl"
+                          e-remove-url.bind="fileRemoveUrl"
+                          e-enabled.bind="!formField.disabled"
+                          e-multiple-files-selection.bind="multipleFiles"
+                          e-allow-drag-and-drop.bind="true"
+                          disabled.bind="formField.disabled"
+                          value.bind="formField.value & validate"></ej-uploadbox>
+          </div>
+          <!--Dropdown field-->
+          <input id="dynCtrl${formField.fieldId}" type="text"
+                 if.bind="formField.elementId==ElementEnum.DropDown"
+                 ej-drop-down-list="e-enabled.bind:!formField.disabled;e-value.two-way:formField.value & validate;e-data-source.bind:filterDataForDropdown(formField.listId);e-fields.bind:fields;e-watermark-text.bind:watermarkText;e-width.bind:cwidth;" />
+          <!--MultiSelect DropDown field-->
+          <input id="dynCtrl${formField.fieldId}" type="text"
+                 if.bind="formField.elementId==ElementEnum.MultiSelectDropDown"
+                 ej-drop-down-list="e-enabled.bind:!formField.disabled;e-value.two-way:formField.value & validate;e-data-source.bind:filterDataForDropdown(formField.listId);e-fields.bind:fields;e-show-checkbox.bind:multiSelectShowCheckbox;e-multiSelectMode.bind:true;e-watermark-text.bind:watermarkText;e-width.bind:cwidth;" />
+          <div>${ElementEnum[formField.elementId]}, Required: ${formField.validation.required}, email: ${formField.validation.email}, MaxLength: ${formField.validation.maxLength}, MinLength: ${formField.validation.minLength}</div>
+          <!--[formField[posFieldListId]]-->
         </div>
-
       </div>
+
     </div>
+  </div>
 
 </template>

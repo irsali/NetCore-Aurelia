@@ -20,7 +20,12 @@ define(["require", "exports", "aurelia-framework", "aurelia-router"], function (
         GoToRoute.prototype.attached = function () {
             var _this = this;
             this.element.addEventListener("click", function () {
-                _this.router.navigateToRoute(_this.route, _this.params);
+                if (_this.isRouteUrl) {
+                    _this.router.navigate(_this.route, _this.options);
+                }
+                else {
+                    _this.router.navigateToRoute(_this.route, _this.params, _this.options);
+                }
             });
         };
         return GoToRoute;
@@ -33,10 +38,18 @@ define(["require", "exports", "aurelia-framework", "aurelia-router"], function (
         aurelia_framework_1.bindable,
         __metadata("design:type", Object)
     ], GoToRoute.prototype, "params", void 0);
+    __decorate([
+        aurelia_framework_1.bindable,
+        __metadata("design:type", Object)
+    ], GoToRoute.prototype, "options", void 0);
+    __decorate([
+        aurelia_framework_1.bindable,
+        __metadata("design:type", Boolean)
+    ], GoToRoute.prototype, "isRouteUrl", void 0);
     GoToRoute = __decorate([
-        aurelia_framework_1.inject(Element, aurelia_router_1.Router),
+        aurelia_framework_1.autoinject(),
         aurelia_framework_1.customAttribute('go-to-route'),
-        __metadata("design:paramtypes", [Object, Object])
+        __metadata("design:paramtypes", [Element, aurelia_router_1.Router])
     ], GoToRoute);
     exports.GoToRoute = GoToRoute;
 });

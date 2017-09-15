@@ -96,12 +96,10 @@ define(["require", "exports", "aurelia-framework", "./refData", "../../models/in
             }
         };
         SecondForm.prototype.callDebugger = function () {
-            this.formFields.forEach(function (value, index, array) {
-                value.disabled = value.disabled ? false : true;
-            });
             this.controller.validate()
                 .then(function (result) {
                 if (result.valid) {
+                    alert('all controls validated correctly');
                 }
             });
         };

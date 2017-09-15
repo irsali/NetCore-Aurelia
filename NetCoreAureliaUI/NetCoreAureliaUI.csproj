@@ -1,19 +1,20 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
-
+﻿<Project Sdk="Microsoft.NET.Sdk.Web" ToolsVersion="15.0">
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
     <TypeScriptToolsVersion>2.3</TypeScriptToolsVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
   </PropertyGroup>
-
   <ItemGroup>
     <Content Include="aurelia_project\tasks\e2e.ts" />
     <Content Include="src\views\generatedControls\refData.ts" />
   </ItemGroup>
-
   <ItemGroup>
     <Folder Include="src\resources\binding-behaviors\" />
   </ItemGroup>
-
   <ItemGroup>
     <None Include="wwwroot\images\person.png" />
   </ItemGroup>
@@ -38,6 +39,8 @@
     <None Update="src\views\not-found.ts">
       <DependentUpon>not-found.html</DependentUpon>
     </None>
+    <None Update="src\views\secure-views\login.js.map">
+      <DependentUpon>login.js</DependentUpon>
+    </None>
   </ItemGroup>
-
 </Project>

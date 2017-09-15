@@ -10,7 +10,7 @@ define(["require", "exports"], function (require, exports) {
                 { route: ['', 'simple-form'], moduleId: './forms/simple-form', name: 'simple-form', title: 'Simple Form' },
                 { route: 'simple-grid', moduleId: './grids/simple-grid', name: 'simple-grid', title: 'Simple Grid' },
                 { route: 'dropdown', moduleId: './forms/dropdown', name: 'dropdown', title: 'Dropdown' },
-                { route: 'api-calls', moduleId: './apiCalls/first-call', name: 'api-calls', title: 'Api Calls' }
+                { route: 'api-calls', moduleId: './apiCalls/first-call', name: 'api-calls', title: 'Api Calls', settings: { login: 'no-login' } }
             ]);
         };
         return Practice;

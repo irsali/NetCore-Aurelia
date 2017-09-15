@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="WpfApp.Views.UserControls.EjControl.Dropdown"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp.Views.UserControls.EjControl"
+             xmlns:cal="http://www.caliburnproject.org"
+             xmlns:syncfusionTool="clr-namespace:Syncfusion.Windows.Tools.Controls;assembly=Syncfusion.Tools.Wpf" 
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"  
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             
+             syncfusion:SkinStorage.VisualStyle="{Binding ElementName=visualstyle,Path=SelectedItem.Content}"
+             FontFamily="Calibri" FontSize="13" 
+             syncfusion:SkinStorage.MetroFontFamily="Calibri"
+             >
+    <!--<TextBox x:Name="FormField_Value" HorizontalAlignment="Left" TextWrapping="Wrap" Width="150" VerticalAlignment="Top" />-->
+
+    <!--SelectedItem="{Binding FormField_Value}-->
+    <!--<ComboBox x:Name="FormField_List" cal:Message.Attach="[Event SelectionChanged] = [Action ComboSelectionChanged($this)]">
+        <ComboBox.ItemTemplate>
+            <DataTemplate>
+                <StackPanel cal:View.Model="{Binding}" Orientation="Horizontal" HorizontalAlignment="Stretch" MinWidth="200">
+                    <Rectangle Width="16" Height="16" Margin="0,2,5,2" />
+                    <TextBlock Text="{Binding Name}" />
+                </StackPanel>
+            </DataTemplate>
+        </ComboBox.ItemTemplate>
+    </ComboBox>-->
+
+    <syncfusion:ComboBoxAdv x:Name="FormField_List" cal:Message.Attach="[Event SelectionChanged] = [Action ComboSelectionChanged($this, $eventArgs)]"
+                            AllowMultiSelect="True"
+                            DefaultText="Choose Items"
+                            DisplayMemberPath="Name"
+                            SelectedValuePath="Value"
+                            SelectedValueDelimiter=" - " >
+            
+    </syncfusion:ComboBoxAdv>
+
+</UserControl>
+

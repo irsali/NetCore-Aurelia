@@ -12,7 +12,6 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging-console", ".
             .plugin('aurelia-validation')
             .plugin('moment');
         if (environment_1.default.debug) {
-            debugger;
             aurelia_framework_1.LogManager.addAppender(new aurelia_logging_console_1.ConsoleAppender());
             aurelia_framework_1.LogManager.setLevel(aurelia_framework_1.LogManager.logLevel.debug);
         }

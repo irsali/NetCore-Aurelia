@@ -19,7 +19,6 @@ export function configure(aurelia: Aurelia) {
         .plugin('moment');
 
     if (environment.debug) {
-        debugger;
         LogManager.addAppender(new ConsoleAppender());
         LogManager.setLevel(LogManager.logLevel.debug);
         //aurelia.use.developmentLogging();

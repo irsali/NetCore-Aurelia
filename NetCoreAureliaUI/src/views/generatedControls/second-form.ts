@@ -134,14 +134,14 @@ export class SecondForm {
 
     callDebugger() {
         // disable/enable fields
-        this.formFields.forEach((value, index, array) => {
-            value.disabled = value.disabled ? false : true;
-        });
+        //this.formFields.forEach((value, index, array) => {
+        //    value.disabled = value.disabled ? false : true;
+        //});
 
         this.controller.validate()
             .then(result => {
                 if (result.valid) {
-
+                    alert('all controls validated correctly');
                 }
             });
     }

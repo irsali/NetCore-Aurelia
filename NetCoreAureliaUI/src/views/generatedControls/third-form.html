@@ -1,0 +1,47 @@
+﻿<template>
+
+  <require from="./form-field-view" ></require>
+
+  <style>
+    /*file upload*/
+    .uploadbox-default-control {
+      /*margin: 0 auto;*/
+      width: 100px;
+      height: 35px;
+    }
+
+    /*Drag and drop upload*/
+    .uploadbox-drag-and-drop-control {
+      width: 40%;
+      height: 100%;
+    }
+
+    .UploadDragAndDrop .e-selectpart {
+      height: 35px;
+    }
+  </style>
+
+  <div class="container">
+    <nav class="navbar navbar-toggleable-md fixed-top navbar-light bg-faded">
+      <div class="navbar-nav mr-auto">
+        <a class="navbar-brand" href="#">Dynamically Generated controls</a>
+      </div>
+      <span click.trigger="callDebugger()" class="navbar-brand my-2 my-lg-0">Debugger</span>
+    </nav>
+  </div>
+
+  <br />
+  <br />
+  <br />
+
+  <div class="row">
+    <div class="col-md-6 offset-3">
+      <!--Repeat for all controls-->
+      <div repeat.for="i of formFields.length">
+        <form-field-view field.bind="formFields[i]"></form-field-view>
+      </div>
+
+    </div>
+  </div>
+
+</template>

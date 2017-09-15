@@ -8,22 +8,31 @@ export class FormField {
     text: string; // label text
     disabled: boolean;
     elementId: ElementEnum;
-    listId: number | string | Array<any>; // for finding dropdown values if element is dropdown
-    validation: any | {
+
+    // dropdown related fields
+    listId: number | string; // donot use this field if using list field. // for finding dropdown values if element is dropdown
+    list: Array<any>; // either use listId or list, in this sample app. first form and second form uses listId whereas third form used list.
+    textValueInList: any; //{ text: 'Name', value: 'Value' }; // for dropdowns default template read data from an object properties named as text and value.
+
+    validation: {
         required: boolean;
         maxLength: null | number;
         minLength: null | number;
         email: boolean;
+    } | any;
+
+    constructor() {
+        this.validation = {}; // Initialize validation object
     }
 
     createValidationRules() {
         if (this.hasValidationRule()) {
 
             return ValidationRules.ensure<FormField, any>(x => x.value)
-                .required() //.when(x => x.validation && x.validation.required)
+                .required().when(x => x.validation && x.validation.required)
                 .email().when(x => x.validation && x.validation.email)
-                .maxLength(this.validation.maxLength).when(x => x.validation && x.validation.maxLength)
-                .minLength(this.validation.maxLength).when(x => x.validation && x.validation.minLength)
+                .maxLength(this.validation.maxLength).when(x => x.validation && x.validation.maxLength && typeof x.value == "string")
+                .minLength(this.validation.maxLength).when(x => x.validation && x.validation.minLength && typeof x.value == "string")
                 .rules;
         }
     }
@@ -31,7 +40,10 @@ export class FormField {
     hasValidationRule(): boolean {
         // TODO: check if validation exist for this form field
         //if (this && this.validation && this.)
-        return true;
+        if( this.validation && Object.keys( this.validation ).length > 0 )
+            return true;
+        else
+            return false;
     }
 
     isRequired(): boolean {
