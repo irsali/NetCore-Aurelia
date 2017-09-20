@@ -9,8 +9,21 @@
       Title="MenuView">
 
     <Grid>
-        <ScrollViewer>
-            <ItemsControl x:Name="MenuItems"/>
-        </ScrollViewer>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <!--<ScrollViewer >
+                <ItemsControl x:Name="MenuItems"/>
+            </ScrollViewer>-->
+            <ListBox  x:Name="MenuItems" >
+                
+            </ListBox>
+        </Grid>
+        <Button Grid.Row="1" Content="ChangeTheme" VerticalAlignment="Bottom" HorizontalAlignment="Left"
+                x:Name="ChangeTheme"
+                />
     </Grid>
+
 </Page>

@@ -10,5 +10,5 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <!--<DatePicker x:Name="FormField_Value" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>-->
-    <xctk:DateTimePicker x:Name="FormField_Value"  HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
+    <xctk:DateTimePicker Value="{Binding Path=FormField.Value, Mode=TwoWay}"  HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
 </UserControl>

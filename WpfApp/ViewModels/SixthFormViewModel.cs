@@ -11,7 +11,7 @@ using WpfApp.ViewModels.UserControls;
 
 namespace WpfApp.ViewModels
 {
-   
+
     public class SixthFormViewModel : Screen
     {
         public SixthFormViewModel()
@@ -40,14 +40,17 @@ namespace WpfApp.ViewModels
 
         public void Save()
         {
-            var s = new StringBuilder();
-
-            foreach (var field in Fields)
+            if (IsValid())
             {
-                s.Append($"{field.MaMControlViewModel.FormField.Text}: {field.MaMControlViewModel.FormField.Value} {Environment.NewLine}");
-            }
+                var s = new StringBuilder();
 
-            MessageBox.Show(s.ToString(), "Message", MessageBoxButton.OK);
+                foreach (var field in Fields)
+                {
+                    s.Append($"{field.MaMControlViewModel.FormField.Text}: {field.MaMControlViewModel.FormField.Value} {Environment.NewLine}");
+                }
+
+                MessageBox.Show(s.ToString(), "Message", MessageBoxButton.OK);
+            }
         }
 
         void SetPositionOfFields()
@@ -123,6 +126,33 @@ namespace WpfApp.ViewModels
                 }
 
                 this.formFields.Add(formField);
+            }
+        }
+
+        public bool IsValid()
+        {
+
+            List<string> errors = new List<string>();
+
+            foreach (var field in Fields)
+            {
+                var errorMessage = field.MaMControlViewModel.Validate();
+                if (field.MaMControlViewModel.HasError)
+                {
+                    errors.Add(field.MaMControlViewModel.Error);
+                };
+            }
+
+            if (errors.Count <= 0)
+            {
+                return true;
+            }
+            else
+            {
+                // Dialog to view error message temporarily
+                //MessageBox.Show(string.Join(Environment.NewLine, errors), "Error Message");
+                //return true;
+                return false;
             }
         }
     }

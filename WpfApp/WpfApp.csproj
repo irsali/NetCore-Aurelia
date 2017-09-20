@@ -141,6 +141,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BooleanToVisibilityConverter.cs" />
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Extensions\ViewModelExtensions.cs" />
     <Compile Include="Models\ElementEnum.cs" />
@@ -398,6 +399,11 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Caliburn.Micro.Validation\Caliburn.Micro.Validation.csproj">
+      <Project>{12dfe382-b20b-4e0e-8ba8-b06ecd71c7ac}</Project>
+      <Name>Caliburn.Micro.Validation</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

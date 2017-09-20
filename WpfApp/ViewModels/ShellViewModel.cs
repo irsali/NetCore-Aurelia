@@ -26,5 +26,6 @@ namespace WpfApp.ViewModels
 
             navigationService.NavigateToViewModel(typeof(MenuViewModel));
         }
+
     }
 }

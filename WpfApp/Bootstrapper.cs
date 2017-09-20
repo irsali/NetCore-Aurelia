@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Data;
 using System.Windows.Threading;
 using WpfApp.ViewModels;
 using WpfApp.ViewModels.UserControls;
@@ -14,6 +15,7 @@ namespace WpfApp
     public class Bootstrapper : BootstrapperBase
     {
         private SimpleContainer container;
+        private static IValueConverter boolToVisibilityConverter = new BooleanToVisibilityConverter();
 
         public Bootstrapper()
         {
@@ -42,6 +44,23 @@ namespace WpfApp
                .PerRequest<FifthFormViewModel>()
                .PerRequest<SixthFormViewModel>()
                ;
+
+            // Setup ValueConverter
+            var oldApplyConverterFunc = ConventionManager.ApplyValueConverter;
+
+            ConventionManager.ApplyValueConverter = (binding, bindableProperty, property) => {
+                if (bindableProperty == UIElement.VisibilityProperty && typeof(bool).IsAssignableFrom(property.PropertyType))
+                    //                                ^^^^^^^           ^^^^^^
+                    //                             Property in XAML     Property in view-model
+                    binding.Converter = boolToVisibilityConverter;
+                //                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+                //                 Our converter used here.
+
+                // else we use the default converter
+                else
+                    oldApplyConverterFunc(binding, bindableProperty, property);
+
+            };
         }
 
         protected override void OnStartup(object sender, StartupEventArgs e)

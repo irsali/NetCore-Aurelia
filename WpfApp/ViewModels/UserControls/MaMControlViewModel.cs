@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using Caliburn.Micro.Validation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +12,17 @@ using WpfApp.Models;
 
 namespace WpfApp.ViewModels.UserControls
 {
-    public class MaMControlViewModel : Screen
+    public class MaMControlViewModel : ValidatingScreen
     {
         public MaMControlViewModel(FormField formField)
         {
             this.FormField = formField;
+            AddValidationRule(() => FormField.Value).Condition(
+                ()
+                =>
+                 FormField.Value == null || string.IsNullOrWhiteSpace( FormField.Value.ToString() )
+                )
+                .Message($"Please enter {FormField.Text}");
         }
 
         public FormField FormField { get; set; }
@@ -44,5 +51,6 @@ namespace WpfApp.ViewModels.UserControls
         }
 
         private static Regex regex = new Regex("[^0-9]+");
+
     }
 }

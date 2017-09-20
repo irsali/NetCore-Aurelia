@@ -5,7 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfApp.Views.UserControls.MaMControl"
              xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             xmlns:cal="http://www.caliburnproject.org"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <TextBox x:Name="FormField_Value" HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Top" />
+    <TextBox 
+        x:Name="FormField_Value" HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Top" 
+        Controls:TextBoxHelper.Watermark="{Binding FormField.Text}" 
+        Controls:TextBoxHelper.ClearTextButton="True"
+        
+        cal:Message.Attach="[Event TextChanged ] = [Action Validate()]"
+        />
 </UserControl>

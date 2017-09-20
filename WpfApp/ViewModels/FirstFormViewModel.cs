@@ -14,6 +14,7 @@ namespace WpfApp.ViewModels
 
         public FirstFormViewModel()
         {
+           
         }
 
         string yourName;
@@ -36,6 +37,8 @@ namespace WpfApp.ViewModels
         }
 
         public bool CanSave(string yourName, string address) => (!string.IsNullOrWhiteSpace(yourName) && !string.IsNullOrWhiteSpace(address));
+
+        
 
     }
 }

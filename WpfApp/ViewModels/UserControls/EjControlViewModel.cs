@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using Caliburn.Micro.Validation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace WpfApp.ViewModels.UserControls
         public EjControlViewModel(FormField formField)
         {
             this.FormField = formField;
+            
         }
 
         public FormField FormField { get; set; }
@@ -53,5 +55,6 @@ namespace WpfApp.ViewModels.UserControls
         }
      
         public string DateValue { get; set; }
+        
     }
 }

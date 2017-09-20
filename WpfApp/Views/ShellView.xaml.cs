@@ -23,5 +23,19 @@ namespace WpfApp.Views
         {
             InitializeComponent();
         }
+
+        public void ChangeThemeInView(object sender, RoutedEventArgs e) {
+            var theme = MahApps.Metro.ThemeManager.DetectAppStyle(App.Current);
+
+            // check existing theme then revert from dark to light and vice versa.
+            if (theme.Item1.Name == "BaseDark")
+            {
+                MahApps.Metro.ThemeManager.ChangeAppTheme(App.Current, "BaseLight");
+            }
+            else
+            {
+                MahApps.Metro.ThemeManager.ChangeAppTheme(App.Current, "BaseDark"); // Or "BaseLight"
+            }
+        }
     }
 }

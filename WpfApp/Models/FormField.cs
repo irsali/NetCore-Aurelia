@@ -10,7 +10,7 @@ namespace WpfApp.Models
     {
         public int FieldId { get; set; } // helpful when submitting form 
         public string Name { get; set; } // fieldName
-        public dynamic Value { get; set; } // user entered or from db
+        public object Value { get; set; } // user entered or from db
         public string Text { get; set; } // label text
         public ElementEnum ElementId { get; set; }
 

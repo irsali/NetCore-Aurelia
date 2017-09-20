@@ -8,6 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
 
-    <xctk:TimePicker x:Name="FormField_Value"  HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
+    <!--x:Name="FormField_Value"-->
+    <xctk:TimePicker Value="{Binding Path=FormField.Value, Mode=TwoWay}" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
 
 </UserControl>
