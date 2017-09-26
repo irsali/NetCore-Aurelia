@@ -9,7 +9,7 @@ using WpfApp.Models;
 namespace WpfApp.ViewModels.UserControls
 {
 
-    public class SixthFormFieldViewModel : Screen
+    public class SixthFormFieldViewModel 
     {
         public SixthFormFieldViewModel(FormField formField)
         {

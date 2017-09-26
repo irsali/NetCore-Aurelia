@@ -10,6 +10,12 @@ namespace WpfApp.ViewModels
     public class MenuItemViewModel : Screen
     {
 
+        public MenuItemViewModel()
+        {
+            this.Title = "title";
+            this.ViewModel = typeof(FirstFormViewModel);
+        }
+
         public MenuItemViewModel(string title,  Type viewModel) {
             this.Title = title;
             this.ViewModel = viewModel;

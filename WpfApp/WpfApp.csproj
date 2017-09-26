@@ -96,6 +96,7 @@
       <HintPath>..\packages\Syncfusion.Tools.WPF46.15.3.0.29\lib\net46\Syncfusion.Tools.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.5.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
@@ -144,11 +145,16 @@
     <Compile Include="BooleanToVisibilityConverter.cs" />
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Extensions\ViewModelExtensions.cs" />
+    <Compile Include="Models\Constants.cs" />
     <Compile Include="Models\ElementEnum.cs" />
     <Compile Include="Models\FieldIdentifiers.cs" />
     <Compile Include="Models\FormField.cs" />
     <Compile Include="Models\ScreenData.cs" />
+    <Compile Include="Models\SimpleMessage.cs" />
+    <Compile Include="Service\IBusyService.cs" />
     <Compile Include="Service\LocalHostService.cs" />
+    <Compile Include="SharedResourceDictionary.cs" />
+    <Compile Include="ViewModels\BusyViewModel.cs" />
     <Compile Include="ViewModels\FifthFormViewModel.cs" />
     <Compile Include="ViewModels\FourthFormViewModel.cs" />
     <Compile Include="ViewModels\SixthFormViewModel.cs" />
@@ -165,6 +171,9 @@
     <Compile Include="ViewModels\UserControls\FourthFormFieldViewModel.cs" />
     <Compile Include="ViewModels\UserControls\FormFieldViewModel.cs" />
     <Compile Include="ViewModels\UserControls\SixthFormFieldViewModel.cs" />
+    <Compile Include="Views\BusyView.xaml.cs">
+      <DependentUpon>BusyView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\FifthFormView.xaml.cs">
       <DependentUpon>FifthFormView.xaml</DependentUpon>
     </Compile>
@@ -221,6 +230,9 @@
     </Compile>
     <Compile Include="Views\UserControls\MaMControl\Dropdown.xaml.cs">
       <DependentUpon>Dropdown.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\MaMControl\FileUpload.xaml.cs">
+      <DependentUpon>FileUpload.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserControls\MaMControl\InputBox.xaml.cs">
       <DependentUpon>InputBox.xaml</DependentUpon>
@@ -286,6 +298,14 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="sharedResources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\BusyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\FifthFormView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -361,6 +381,10 @@
     <Page Include="Views\UserControls\MaMControl\Dropdown.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\MaMControl\FileUpload.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\UserControls\MaMControl\InputBox.xaml">
       <SubType>Designer</SubType>

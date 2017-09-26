@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace WpfApp.Views
 {
     /// <summary>
-    /// Interaction logic for MenuView.xaml
+    /// Interaction logic for BusyView.xaml
     /// </summary>
-    public partial class MenuView 
+    public partial class BusyView : UserControl
     {
-        public MenuView()
+        public BusyView()
         {
             InitializeComponent();
         }

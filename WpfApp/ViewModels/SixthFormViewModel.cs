@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using WpfApp.Extensions;
 using WpfApp.Models;
 using WpfApp.Service;
 using WpfApp.ViewModels.UserControls;
@@ -12,18 +13,40 @@ using WpfApp.ViewModels.UserControls;
 namespace WpfApp.ViewModels
 {
 
-    public class SixthFormViewModel : Screen
+    public class SixthFormViewModel : Screen, IHandle<SimpleMessage>
     {
-        public SixthFormViewModel()
+        //public SixthFormViewModel(BusyViewModel busyViewModel)
+        //{
+        //    Fields = new BindableCollection<SixthFormFieldViewModel>();
+        //    BusyViewModel = busyViewModel;
+        //}
+        private static readonly ILog Log = LogManager.GetLog(typeof(ShellViewModel));
+
+        public SixthFormViewModel(IEventAggregator eventAggregator)
         {
-            OnInit();
-
             Fields = new BindableCollection<SixthFormFieldViewModel>();
+            this.eventAggregator = eventAggregator;
+        }
 
-            foreach (var formField in formFields)
+        public void Publish()
+        {
+            eventAggregator.PublishOnUIThread(new SimpleMessage(Constants.LOADING));
+        }
+
+        //public IWindowManager WindowManager { get; set; }
+        private readonly IEventAggregator eventAggregator;
+
+        protected override void OnInitialize()
+        {
+            base.OnInitialize();
+            Subscribe();
+            Task.Run(() =>
             {
-                Fields.Add(new SixthFormFieldViewModel(formField));
-            }
+                IsBusy = true;
+                OnInit();
+                CreateFormFieldViewModel();
+                IsBusy = false;
+            });
         }
 
         List<string> fieldIdentifier;
@@ -40,6 +63,7 @@ namespace WpfApp.ViewModels
 
         public void Save()
         {
+            //((IHandle<SimpleMessage>)this).Handle(new SimpleMessage(Constants.LOADING));
             if (IsValid())
             {
                 var s = new StringBuilder();
@@ -129,6 +153,15 @@ namespace WpfApp.ViewModels
             }
         }
 
+        private void CreateFormFieldViewModel()
+        {
+
+            foreach (var formField in formFields)
+            {
+                Fields.Add(new SixthFormFieldViewModel(formField));
+            }
+        }
+
         public bool IsValid()
         {
 
@@ -151,9 +184,46 @@ namespace WpfApp.ViewModels
             {
                 // Dialog to view error message temporarily
                 //MessageBox.Show(string.Join(Environment.NewLine, errors), "Error Message");
-                //return true;
-                return false;
+                return true;
+                //return false;
             }
         }
+
+        #region Subscribe busy indicater
+
+        public void Subscribe()
+        {
+            eventAggregator.Subscribe(this);
+        }
+
+        public void Unsubscribe()
+        {
+            eventAggregator.Unsubscribe(this);
+        }
+
+        void IHandle<SimpleMessage>.Handle(SimpleMessage message)
+        {
+            if (message == null)
+            {
+                Log.Error(new Exception($"message was not set in SimpleMessage"));
+            }
+            else if (message.Message == Constants.LOADING)
+            {
+                IsBusy = true;
+            }
+            else //if (message.Message == Constants.LOADED)
+            {
+                IsBusy = false;
+            }
+        }
+
+        private bool isBusy = true;
+
+        public bool IsBusy {
+            get { return isBusy; }
+            set { this.Set(ref isBusy, value); }
+        }
+
+        #endregion
     }
 }

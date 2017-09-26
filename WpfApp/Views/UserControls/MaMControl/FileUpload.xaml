@@ -4,13 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfApp.Views.UserControls.MaMControl"
-             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" xmlns:Custom="http://metro.mahapps.com/winfx/xaml/controls" x:Class="WpfApp.Views.UserControls.MaMControl.TimeInputBox"
+             xmlns:Custom="http://metro.mahapps.com/winfx/xaml/controls" x:Class="WpfApp.Views.UserControls.MaMControl.FileUpload"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
 
-    <!--x:Name="FormField_Value"-->
-    <!--<xctk:TimePicker Value="{Binding Path=FormField.Value, Mode=TwoWay}" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>-->
-
-    <Custom:TimePicker SelectedTime="{Binding Path=FormField.Value, Mode=TwoWay}" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
+    <Custom:DateTimePicker HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
 </UserControl>

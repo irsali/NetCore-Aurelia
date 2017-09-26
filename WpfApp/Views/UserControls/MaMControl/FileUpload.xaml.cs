@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfApp.Views
+namespace WpfApp.Views.UserControls.MaMControl
 {
     /// <summary>
-    /// Interaction logic for MenuView.xaml
+    /// Interaction logic for FileUpload.xaml
     /// </summary>
-    public partial class MenuView 
+    public partial class FileUpload : UserControl
     {
-        public MenuView()
+        public FileUpload()
         {
             InitializeComponent();
         }

@@ -1,4 +1,5 @@
-﻿using Caliburn.Micro;
+﻿using WpfApp.Views;
+using Caliburn.Micro;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Threading;
+using WpfApp.Service;
 using WpfApp.ViewModels;
 using WpfApp.ViewModels.UserControls;
 
@@ -43,6 +45,8 @@ namespace WpfApp
                .PerRequest<FourthFormViewModel>()
                .PerRequest<FifthFormViewModel>()
                .PerRequest<SixthFormViewModel>()
+               .PerRequest<IBusyService, DefaultBusyService>()
+               .PerRequest<BusyViewModel>()
                ;
 
             // Setup ValueConverter

@@ -8,17 +8,21 @@
         xmlns:cal="http://www.caliburnproject.org"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         WindowStartupLocation="CenterScreen"
-        Title="ShellView" Height="600" Width="800">
-    <Grid>
-        <Frame cal:Message.Attach="RegisterFrame($source)" DataContext="{x:Null}" />
-    </Grid>
+        Title="Practice" Height="600" Width="800"
+                                >
 
+    <!--Switch theme-->
     <Controls:MetroWindow.RightWindowCommands>
         <Controls:WindowCommands>
             <Button Click="ChangeThemeInView"
                     Content="Toggle Theme"
-                    ToolTip="Toggle Theme" />
+                    ToolTip="Toggle Theme"  />
         </Controls:WindowCommands>
     </Controls:MetroWindow.RightWindowCommands>
+
+   
+        <Frame  cal:Message.Attach="RegisterFrame($source)" DataContext="{x:Null}" />
+    
 </Controls:MetroWindow>

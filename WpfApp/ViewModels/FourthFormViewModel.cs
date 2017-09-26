@@ -41,7 +41,8 @@ namespace WpfApp.ViewModels
 
         public void Save()
         {
-            var s = new StringBuilder();
+            
+               var s = new StringBuilder();
 
             foreach (var field in Fields)
             {

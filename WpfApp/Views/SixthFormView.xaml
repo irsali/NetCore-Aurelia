@@ -6,6 +6,10 @@
       xmlns:local="clr-namespace:WpfApp.Views"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
+      xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+       xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock"
       Title="SixthFormView">
 
     <Grid>
@@ -14,7 +18,20 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <ListBox x:Name="Fields">
+        
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Panel.ZIndex="11" 
+                    Visibility="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}">
+            <xctk:BusyIndicator BusyContent="Loading..." VerticalAlignment="Top" IsBusy="True" TextOptions.TextHintingMode="Animated" AutomationProperties.IsOffscreenBehavior="Onscreen" Focusable="False" Foreground="#FF348323" Panel.ZIndex="9999" RenderTransformOrigin="0,13" IsTabStop="False" Grid.IsSharedSizeScope="True" HorizontalAlignment="Center" HorizontalContentAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                <xctk:BusyIndicator.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                        <GradientStop Color="#FF114011" Offset="1"/>
+                    </LinearGradientBrush>
+                </xctk:BusyIndicator.Background>
+            </xctk:BusyIndicator>
+        </StackPanel>
+
+        <ListBox Grid.Row="0"  x:Name="Fields" HorizontalAlignment="Stretch" >
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
                     <Setter Property="Margin" Value="0,0,0,10"/>
@@ -22,9 +39,13 @@
             </ListBox.ItemContainerStyle>
         </ListBox>
 
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,12,10, 10">
-            <Button x:Name="Save" Content="Save" HorizontalAlignment="Right" Width="70"/>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,12,10, 10">
+            <Separator Style="{StaticResource MetroStatusBarSeparator}" />
+            <Button Content="Save" HorizontalAlignment="Right" Width="70"
+                x:Name="Save" 
+                    Margin="{DynamicResource ControlMargin}"
+             />
         </StackPanel>
     </Grid>
-    
+
 </Page>

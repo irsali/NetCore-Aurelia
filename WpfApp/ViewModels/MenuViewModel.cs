@@ -12,6 +12,19 @@ namespace WpfApp.ViewModels
     {
         private INavigationService navigationService;
 
+        // For design time assistance
+        public MenuViewModel() {
+            MenuItems = new BindableCollection<MenuItemViewModel>
+            {
+                new MenuItemViewModel("First Form", typeof(FirstFormViewModel)),
+                new MenuItemViewModel("Second Form", typeof(SecondFormViewModel)),
+                new MenuItemViewModel("Third Form", typeof(ThirdFormViewModel)),
+                new MenuItemViewModel("Fourth Form", typeof(FourthFormViewModel)),
+                new MenuItemViewModel("Fifth Form", typeof(FifthFormViewModel)),
+                new MenuItemViewModel("Sixth Form", typeof(SixthFormViewModel)),
+            };
+        }
+
         public MenuViewModel(INavigationService navigationService)
         {
             this.navigationService = navigationService;

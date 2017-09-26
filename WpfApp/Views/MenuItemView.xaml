@@ -6,7 +6,10 @@
              xmlns:local="clr-namespace:WpfApp.Views"
               xmlns:cal="http://www.caliburnproject.org"
              mc:Ignorable="d" 
+             xmlns:ViewModels="clr-namespace:WpfApp.ViewModels"
+             d:DataContext="{d:DesignInstance Type=ViewModels:MenuItemViewModel, IsDesignTimeCreatable=True}"
              d:DesignHeight="300" d:DesignWidth="300">
+             <!--cal:Bind.AtDesignTime="True"-->
     <Grid Margin="20,10">
         <Button cal:Message.Attach="OnSelectMenuItem($dataContext)"  HorizontalContentAlignment="Left">
             <StackPanel Margin="5">

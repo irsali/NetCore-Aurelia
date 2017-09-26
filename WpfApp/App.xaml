@@ -1,4 +1,5 @@
-﻿<Application x:Class="WpfApp.App"
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Application x:Class="WpfApp.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:WpfApp"
@@ -20,8 +21,12 @@
                 <!-- Accent and AppTheme setting -->
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
+                <ResourceDictionary Source="sharedResources.xaml"/>
 
             </ResourceDictionary.MergedDictionaries>
+
+            <Thickness x:Key="ControlMargin">5,0</Thickness>
         </ResourceDictionary>
+
     </Application.Resources>
 </Application>

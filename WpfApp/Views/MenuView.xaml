@@ -1,28 +1,34 @@
-﻿<Page x:Class="WpfApp.Views.MenuView"
+﻿<Page
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfApp.Views"
+      xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls" x:Class="WpfApp.Views.MenuView"
+    xmlns:cal="http://www.caliburnproject.org"   
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
+      xmlns:ViewModels="clr-namespace:WpfApp.ViewModels"
+      d:DataContext="{d:DesignInstance Type=ViewModels:MenuViewModel, IsDesignTimeCreatable=True}"
+        Style="{DynamicResource MetroPage}"
       Title="MenuView">
+    <!--cal:Bind.AtDesignTime="True"-->
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <!--<ScrollViewer >
                 <ItemsControl x:Name="MenuItems"/>
             </ScrollViewer>-->
-            <ListBox  x:Name="MenuItems" >
-                
-            </ListBox>
+            <ListBox x:Name="MenuItems" Margin="0,0,-205,0" />
         </Grid>
         <Button Grid.Row="1" Content="ChangeTheme" VerticalAlignment="Bottom" HorizontalAlignment="Left"
                 x:Name="ChangeTheme"
+                cal:View.Context=""
+                Style="{DynamicResource SquareButtonStyle}"
                 />
     </Grid>
 

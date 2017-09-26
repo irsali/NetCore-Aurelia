@@ -25,7 +25,7 @@ define(["require", "exports"], function (require, exports) {
                 ],
                 [
                     "433",
-                    "Crawford Handling Office Reference",
+                    "Abc Handling Office Reference",
                     "35",
                     "2",
                     null
@@ -158,7 +158,7 @@ define(["require", "exports"], function (require, exports) {
                 ],
                 [
                     "1885",
-                    "Legacy Crawford Reference",
+                    "Legacy Abc Reference",
                     "35",
                     "1",
                     null
